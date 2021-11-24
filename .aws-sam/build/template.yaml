@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  myDB:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: appData
+      PrimaryKey:
+        Name: id
+        Type: String
+  LambdaRead:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: LambdaRead
+      Handler: resumeVisitorCount.lambda_handler
+      Runtime: python3.9
+      Events:
+        apiForLambda:
+          Type: Api
+          Properties:
+            Path: /readdb
+            Method: get
+      Policies:
+        DynamoDBCrudPolicy:
+          TableName:
+            Ref: myDB
