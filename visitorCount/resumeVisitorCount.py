@@ -12,8 +12,6 @@ def get_count():
 )
     return int(resp['Item']['count'])
 
-
-
 def lambda_handler(event, context):
     old_count = get_count()
     print("old count was "+str(old_count))
