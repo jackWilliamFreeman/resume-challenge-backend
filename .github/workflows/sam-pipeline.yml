@@ -20,9 +20,9 @@ jobs:
       - run: sam build --use-container
 
 # Run Unit tests- Specify unit tests here 
-    name: run unit test(s)
-    - run: python3 tests\api_gateway_test.py
+    - name: run unit test(s)
+    run: python3 tests\api_gateway_test.py
 
 # sam deploy
-    name: deploy using SAM
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+    - name: deploy using SAM
+      run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
