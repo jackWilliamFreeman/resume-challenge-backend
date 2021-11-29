@@ -1,7 +1,7 @@
 
 # Resume Challenge Backend
 
-A ackend for completing the resume challenge found here:
+A backend for completing the resume challenge found here:
 
 https://cloudresumechallenge.dev/docs/the-challenge/aws/
 
