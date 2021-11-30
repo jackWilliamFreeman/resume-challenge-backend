@@ -14,6 +14,7 @@ class TestApiGateway(TestCase):
 
     @classmethod
     def get_api_endpoint(cls) -> str:
+        #a good refactoring here would be to inject the url via env variables/config. but it will do for now on this project. Tech debt shame abounds
         endpoint_uri = "https://2suw3xvc05.execute-api.ap-southeast-2.amazonaws.com/Prod/readdb"
         if not endpoint_uri:
             raise Exception(
@@ -24,12 +25,7 @@ class TestApiGateway(TestCase):
         return endpoint_uri
 
     def setUp(self) -> None:
-        """
-        Based on the provided env variable AWS_API_URI,
-        here we use cloudformation API to find out what the HelloWorldApi URL is
-        """
         api_uri = TestApiGateway.get_api_endpoint()
-
         self.api_endpoint = api_uri
 
     def test_api_gateway(self):
